@@ -3,6 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 extern crate getopts;
+#[macro_use]
+extern crate lazy_static;
 
 pub mod ast;
 pub mod errors;
@@ -60,5 +62,5 @@ fn main() {
         file_names.push(PathBuf::from(f));
     }
 
-    compiler::compile(&include_dirs, file_names);
+    let files_to_write = compiler::compile(&include_dirs, file_names);
 }
